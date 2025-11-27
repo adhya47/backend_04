@@ -1,0 +1,52 @@
+This project implements a secure authentication workflow using Node.js, JWT, and Redis.
+The main highlight is the Redis-powered logout mechanism, where user tokens are stored in Redis with an expiry time to ensure they cannot be reused after logout.
+
+📌 What I Learned
+
+While building and improving the logout feature, I explored Redis in-depth, including:
+
+✅ 1. Token Blacklisting using Redis
+
+On logout, the user’s JWT token is stored inside Redis.
+
+This prevents the token from being used again even if it is technically still valid.
+
+Redis acts as a fast in-memory blacklist.
+
+✅ 2. Setting Token Expiry in Redis
+
+Each stored token in Redis is given a TTL (Time-to-Live) equal to the remaining validity of the JWT.
+
+Once TTL expires, Redis automatically removes the token.
+
+This ensures memory is optimized and old tokens are cleaned automatically.
+
+✅ 3. Efficient Authentication Handling
+
+Every protected route checks Redis before authenticating:
+
+If the token exists in Redis → Access Denied
+
+If not → verify JWT normally
+
+This combines stateless JWT authentication with stateful security enhancement.
+
+✅ 4. Deep Understanding of Redis Concepts
+
+How to create Redis clients
+
+How to manage keys and TTL
+
+Understanding memory store vs persistence
+
+Handling Redis connection issues and authentication
+
+🛠️ Tech Stack
+
+Node.js + Express.js
+
+JSON Web Tokens (JWT)
+
+Redis (for token blacklisting & TTL)
+
+bcrypt (for passwords)
