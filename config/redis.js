@@ -19,9 +19,9 @@ const redisClient = redis.createClient({
     port: 15956,
   },
 });
-const connectRedis = async () => {
-  await redisClient.connect();
-  console.log("connected to redis");
-};
-connectRedis();
+// const connectRedis = async () => {
+//   await redisClient.connect();
+//   console.log("connected to redis");
+// };
+// connectRedis();
 module.exports = redisClient;
